@@ -219,7 +219,8 @@ attachApplicationLocked(thread, callingPid);
                      didSomething = true;
                  }
 ```
->PS:这个方法不仅启动Activity，还启动Service,还注册Broadcast,完成应用启动的工作。  
+>PS:这个方法不仅启动Activity，还启动Service,还注册Broadcast,完成应用启动的工作。
+
 35 ActivityStackSupervisor的`attachApplicationLocked`会调用自身的`realStartActivityLocked`
 ```java
 if (realStartActivityLocked(hr, app, true, true)) {
