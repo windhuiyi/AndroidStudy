@@ -1,8 +1,7 @@
-Activity 工作过程
+Launcher启动应用程序过程
 ===============
-### Activity 的启动过程
----------------------
-#### 应用程序的启动过程
+#### Launcher启动应用程序流程图
+![activity_flow](../images/activity_flow.png "桌面启动应用流程")
 1.Launcher会执行的`startActivity`有几种重载方法，但最终会调用`startActivityForResult`  
 2.Activity 的`startActivityForResult`会调用Instrumentation的`execStartActivity`方法
 ```Java
@@ -250,7 +249,7 @@ activity.performCreate(icicle);
 ```
 41 Activity的`performCreate`会调用自身的onCreate，至此Activity就onCreate.由桌面启动应用程序流程会比较多一点。
 onCreate(icicle);
-![activity_flow](../images/activity_flow.png "桌面启动应用流程")
+
 ##### 参考 Android应用程序启动过程源代码分析
 [http://blog.csdn.net/luoshengyang/article/details/6689748]
 
