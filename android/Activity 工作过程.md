@@ -249,7 +249,7 @@ activity.performCreate(icicle);
 ```
 41 Activity的`performCreate`会调用自身的onCreate，至此Activity就onCreate.由桌面启动应用程序流程会比较多一点。
 onCreate(icicle);
-![activity_flow](../../images/activity_flow.png "桌面启动应用流程图")
+![activity_flow](../images/activity_flow.png "桌面启动应用流程")
 ##### 参考 Android应用程序启动过程源代码分析
 [http://blog.csdn.net/luoshengyang/article/details/6689748]
 
