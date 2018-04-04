@@ -20,24 +20,17 @@ int result = ActivityManagerNative.getDefault()
 
 > PS:这个方法最后还会执行`checkStartActivityResult`来检查是否启动成功.  
 
-4.ActivityManagerNative的`gDefault`会通过Binder返回ActivityManagerService的单例。实际上是调用的是ActivityManagerService的`startActivity`方法，会调用`startActivityAsUser` 
+4.ActivityManagerNative的`getDefault`会通过Binder返回ActivityManagerService的单例。实际上是调用的是ActivityManagerService的`startActivity`方法，会调用`startActivityAsUser`
 ``` java
-    @Inject
-    public OrderListViewModel(OrderRepository repository) {
-        super(repository);
-    }           
+startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
+             resultWho, requestCode, startFlags, profilerInfo, options,
+             UserHandle.getCallingUserId());    
 ```
 
 5.ActivityManagerService的`startActivityAsUser`会调用ActivityStackSupervisor的`startActivityMayWait`
 ```java
 mStackSupervisor.startActivityMayWait(caller, -1, callingPackage, intent,resolvedType, null, null, resultTo, resultWho, requestCode, startFlags,
     profilerInfo, null, null, options, userId, null, null);  
-```
-```java
-Instrumentation.ActivityResult ar =
-                mInstrumentation.execStartActivity(
-                    this, mMainThread.getApplicationThread(), mToken, this,
-                    intent, requestCode, options);  
 ```
 6 ActivityStackSupervisor的`startActivityMayWait`会调用`startActivityLocked`
 ```java
@@ -250,8 +243,6 @@ activity.performCreate(icicle);
 41 Activity的`performCreate`会调用自身的onCreate，至此Activity就onCreate.由桌面启动应用程序流程会比较多一点。
 onCreate(icicle);
 
-##### 参考 Android应用程序启动过程源代码分析
-[http://blog.csdn.net/luoshengyang/article/details/6689748]
-
-
-
+#### 参考
+1. [Android应用程序启动过程源代码分析](http://blog.csdn.net/luoshengyang/article/details/6689748)
+2. Android艺术探索
