@@ -2,8 +2,8 @@ Activity 工作过程
 ===============
 ### Activity 的启动过程
 ---------------------
-####应用程序的启动过程
-1.Launcher会执行的`startActivity`有几种 [重载方法，]() []() 但最终会调用`startActivityForResult`
+#### 应用程序的启动过程
+1.Launcher会执行的`startActivity`有几种 [重载方法，]() []() 但最终会调用`startActivityForResult`  
 2.Activity 的`startActivityForResult`会调用Instrumentation的`execStartActivity`方法
 ```Java
 Instrumentation.ActivityResult ar = mInstrumentation.execStartActivity(
