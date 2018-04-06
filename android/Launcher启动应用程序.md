@@ -2,6 +2,7 @@ Launcher启动应用程序过程
 ===============
 #### Launcher启动应用程序流程图
 ![activity_flow](../images/activity_flow.png "桌面启动应用流程")
+---------------
 1.Launcher会执行的`startActivity`有几种重载方法，但最终会调用`startActivityForResult`  
 2.Activity 的`startActivityForResult`会调用Instrumentation的`execStartActivity`方法
 ```Java
@@ -66,6 +67,7 @@ result = resumeTopActivityInnerLocked(prev, options);
 pausing |= startPausingLocked(userLeaving, false, true, dontWaitForPause);
 ```
 >PS： 这里会结束掉这个resumeTopActivityInnerLocked，返回true
+
 ```java
 if (pausing) {
              if (DEBUG_SWITCH || DEBUG_STATES) Slog.v(TAG,
@@ -88,6 +90,7 @@ prev.app.thread.schedulePauseActivity(prev.appToken, prev.finishing,userLeaving,
 ```
 14 ActivityThread的ApplicationThread的`schedulePauseActivity`发送消息最后会调用ActivityThread的`handlePauseActivity`,最后会调用ActivityManagerService的`activityPaused`  
 >PS:performPauseActivity会调用Activity的onPause
+
 ```java
 ActivityManagerNative.getDefault().activityPaused(token);
 ```
@@ -142,6 +145,7 @@ Process.ProcessStartResult startResult = Process.start(entryPoint,
  return zygoteSendArgsAndGetResult(openZygoteSocketIfNeeded(abi), argsForZygote);
 ```
 >PS:`openZygoteSocketIfNeeded`会打开socket
+
 25 ZygoteInit的`runSelectLoop`会接收到这个消息，然后执行ZygoteConnection的`runOnce`
 ```java
 done = peers.get(index).runOnce();
