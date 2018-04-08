@@ -1,7 +1,7 @@
 应用内启动Activity
 =============
 #### 应用内启动Activity流程图
-![activity_flow](/images/activity_start_flow.png "应用内启动Activity流程")
+![activity_start_flow](/images/activity_start_flow.png "应用内启动Activity流程")
 -------------
 1 Activity会执行的`startActivity`有几种重载方法，但最终会调用`startActivityForResult`
 
