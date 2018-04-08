@@ -62,7 +62,8 @@ Gradle 打包相关知识
 
 ##### 参考
 ---------
-[构建神器Gradle](http://jiajixin.cn/2015/08/07/gradle-android/)
-[构建 Variants（变种）版本](https://chaosleong.gitbooks.io/gradle-for-android/content/build_variants/)
+[构建神器Gradle](http://jiajixin.cn/2015/08/07/gradle-android/)  
+[构建 Variants（变种）版本](https://chaosleong.gitbooks.io/gradle-for-android/content/build_variants/)  
 [Android Studio打包全攻略](http://www.cnblogs.com/jiuyi/p/6098589.html)
+
 
