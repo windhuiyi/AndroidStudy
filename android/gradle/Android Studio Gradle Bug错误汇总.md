@@ -30,3 +30,7 @@ productFlavors {
 }
 
 ```
+
+####  `gradlew: command not found`
+
+- 解决办法：不要运行`gradlew`,运行`./gradlew`,不过一开始还是不行的。。。需要先运行`chmod ./gradlew`
