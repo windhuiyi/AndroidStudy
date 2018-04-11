@@ -1,6 +1,6 @@
 Gradle 打包相关知识
 =================
-#### 开发过程中，有生产环境、测试环境、开发环境等，它们使用的服务器地址和端口可能不同。可以在`gradle`里面进行配置，运行或生成不同配置的app
+#### 开发过程中，有生产环境、测试环境、开发环境等，它们使用的服务器地址和端口可能不同。可以在`gradle`里面进行配置，运行或生成不同配置的apk
 
 - 可以配置`buildTypes`
 
@@ -20,9 +20,7 @@ Gradle 打包相关知识
         debug {
             signingConfig signingConfigs.debug
             minifyEnabled false
-            //Zipalign优化
             zipAlignEnabled true
-            // 移除无用的resource文件
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "WXURL", "\"https://api.weixin.qq.com/\""
