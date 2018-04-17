@@ -55,6 +55,70 @@ productFlavors {
 
 
 * 参考
+
     [安卓模拟器设置网速和延迟](https://blog.csdn.net/crazyman2010/article/details/53229520)  
     [AVD 属性](https://developer.android.com/studio/run/managing-avds.html)
 
+
+
+#### Absolute path are not supported when setting an output file name
+
+- 解决办法: 修改路径。
+
+    `BEFORE gradle 3.1.0`
+```java
+
+applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        outputFileName = new File(
+                output.outputFile.parent,
+                output.outputFile.name)
+    }
+}
+applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        outputFileName = new File(
+                "./../../../../../build/",
+                output.outputFile.name)
+    }
+}
+```
+    `IN or AFTER gradle 3.1.0`
+```java
+applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        outputFileName = new File(
+                "./../../../../../build/",
+                output.outputFile.name)
+    }
+}
+```
+
+- 参考：  
+[stackoverflow](https://stackoverflow.com/questions/49530142/android-studio-3-1-buildgradle3-1-0-absolute-path-are-not-supported-when-se)
+
+#### GreenDao 报错 `org.eclipse.jdt.internal.compiler.impl.CompilerOptions.versionToJdkLevel(Ljava/lang/Object;)J'.`
+
+- 解决办法：
+
+    - 移除app里面build.gradle关于GreenDao的配置
+
+    ```java
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
+        }
+    }
+    ```
+    - 在project的build.gradle的`dependencies`里面添加`classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'`
+    ```java
+        dependencies {
+            classpath 'com.android.tools.build:gradle:2.3.1'
+            classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
+            // NOTE: Do not place your application dependencies here; they belong
+            // in the individual module build.gradle files
+        }
+    ```
