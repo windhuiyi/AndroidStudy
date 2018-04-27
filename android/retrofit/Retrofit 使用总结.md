@@ -1,7 +1,7 @@
 Retrofit 学习
 ===========
 
-#### Retrofit 动态URL @GET Url地址和baseUrl不同，如何设置？
+### Retrofit 动态URL @GET Url地址和baseUrl不同，如何设置？
 
 - 设置`@Url`参数
 

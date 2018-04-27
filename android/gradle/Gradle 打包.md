@@ -1,8 +1,8 @@
-Gradle 打包相关知识
-=================
-#### 开发过程中，有生产环境、测试环境、开发环境等，它们使用的服务器地址和端口可能不同。可以在`gradle`里面进行配置，运行或生成不同配置的apk
+Gradle 打包 相关知识
+==============
+### 开发过程中，有生产环境、测试环境、开发环境等，它们使用的服务器地址和端口可能不同。可以在`gradle`里面进行配置，运行或生成不同配置的apk
 
-- 可以配置`buildTypes`
+##### 可以配置`buildTypes`
 
 ```java
     buildTypes {
@@ -29,7 +29,7 @@ Gradle 打包相关知识
     }
 ```
 
-- 可以配置`productFlavors`
+#### 可以配置`productFlavors`
 
 > PS:需要先添加`flavorDimensions`,然后在各个flavor里面添加`dimension`,名称保持一致。
 
@@ -51,17 +51,17 @@ Gradle 打包相关知识
     }
 ```
 
-- 这样的话，`buildTypes`和`productFlavors`会进行两两组合，生成多个`Build Variant`。
+> 这样的话，`buildTypes`和`productFlavors`会进行两两组合，生成多个`Build Variant`。
 
 #### 如何一次生成所有`Release`包
 
 - 使用命令`./gradlew assembleRelease`,如果在Mac下报错，需要先运行`chmod 755 ./gradlew`
 
 
-##### 参考
----------
-[构建神器Gradle](http://jiajixin.cn/2015/08/07/gradle-android/)  
-[构建 Variants（变种）版本](https://chaosleong.gitbooks.io/gradle-for-android/content/build_variants/)  
-[Android Studio打包全攻略](http://www.cnblogs.com/jiuyi/p/6098589.html)
+###### 参考
+
+- [构建神器Gradle](http://jiajixin.cn/2015/08/07/gradle-android/)
+- [构建 Variants（变种）版本](https://chaosleong.gitbooks.io/gradle-for-android/content/build_variants/)
+- [Android Studio打包全攻略](http://www.cnblogs.com/jiuyi/p/6098589.html)
 
 

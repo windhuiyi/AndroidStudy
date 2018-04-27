@@ -1,12 +1,12 @@
 Android Studio Gradle Bug错误汇总
 =============================
-####  Run 的时候报错，`apk does not exist on disk.`
+###  Run 的时候报错，`apk does not exist on disk.`
 
-- 解决办法：尼玛，也不知道为什么。。。点一下`Gradle projects`的那个刷新图标就行了。
+- 解决办法：点一下`Gradle projects`的那个刷新图标就行了。
 
 ![android_studio_gradle_01](/images/android_studio_gradle_01.png "android_studio_gradle_01")
 
-#### Error:All flavors must now belong to a named flavor dimension.
+### Error:All flavors must now belong to a named flavor dimension.
 
 - 解决办法：Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html ，就在这个网址可以找到答案。
     - 要解决此错误，请将每个风味分配至一个给定维度，如下面的示例中所示。 由于依赖项匹配现在由插件处理，您应当谨慎地为风味维度命名。例如，如果您的所有应用和库模块均使用 foo 维度，您对插件可以匹配的风味的控制力较弱。
@@ -31,15 +31,15 @@ productFlavors {
 
 ```
 
-####  `gradlew: command not found`
+###  `gradlew: command not found`
 
 - 解决办法：不要运行`gradlew`,运行`./gradlew`,不过一开始还是不行的。。。需要先运行`chmod ./gradlew`
 
-#### Android Studio 自带模拟器没有Wi-Fi
+### Android Studio 自带模拟器没有Wi-Fi
 
 - Wifi is not available on the emulator if you are using below of API level 25.所以要搞个25或以上的虚拟机。
 
-#### Android Studio 模拟器 网络类型和速度
+### Android Studio 模拟器 网络类型和速度
 
 |  # |  Network Type | Full Name                                  | Speed                                  |
 |:-- |:--:           |:--:                                        |:---:                                   |
@@ -54,14 +54,12 @@ productFlavors {
 |  9 | Full          | 以计算机允许的最大速度传输数据。               | |
 
 
-* 参考
+###### 参考
 
-    [安卓模拟器设置网速和延迟](https://blog.csdn.net/crazyman2010/article/details/53229520)  
-    [AVD 属性](https://developer.android.com/studio/run/managing-avds.html)
+- [安卓模拟器设置网速和延迟](https://blog.csdn.net/crazyman2010/article/details/53229520)
+- [AVD 属性](https://developer.android.com/studio/run/managing-avds.html)
 
-
-
-#### Absolute path are not supported when setting an output file name
+### Absolute path are not supported when setting an output file name
 
 - 解决办法: 修改路径。
 
@@ -94,10 +92,11 @@ applicationVariants.all { variant ->
 }
 ```
 
-- 参考：  
-[stackoverflow](https://stackoverflow.com/questions/49530142/android-studio-3-1-buildgradle3-1-0-absolute-path-are-not-supported-when-se)
+######  参考
 
-#### GreenDao 报错 `org.eclipse.jdt.internal.compiler.impl.CompilerOptions.versionToJdkLevel(Ljava/lang/Object;)J'.`
+- [stackoverflow](https://stackoverflow.com/questions/49530142/android-studio-3-1-buildgradle3-1-0-absolute-path-are-not-supported-when-se)
+
+### GreenDao 报错 `org.eclipse.jdt.internal.compiler.impl.CompilerOptions.versionToJdkLevel(Ljava/lang/Object;)J'.`
 
 - 解决办法：
 
@@ -122,3 +121,6 @@ applicationVariants.all { variant ->
             // in the individual module build.gradle files
         }
     ```
+### Android Studio 不停的Indexing
+
+- 使用万能的`File > Invalidate Caches/Restart`
