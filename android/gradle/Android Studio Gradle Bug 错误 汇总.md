@@ -1,5 +1,6 @@
 Android Studio Gradle Bug错误汇总
 =============================
+
 ###  Run 的时候报错，`apk does not exist on disk.`
 
 - 解决办法：点一下`Gradle projects`的那个刷新图标就行了。
@@ -124,3 +125,21 @@ applicationVariants.all { variant ->
 ### Android Studio 不停的Indexing
 
 - 使用万能的`File > Invalidate Caches/Restart`
+
+### Gradle 打包 错误 `Error:trouble processing "javax/xml/namespace/QName.class":`
+
+```java
+Error:trouble processing "javax/xml/namespace/QName.class":
+Error:Ill-advised or mistaken usage of a core class (java.* or javax.*)
+Error:when not building a core library...
+```
+
+- 解决办法：在`build.gradle`的`dexOptions`添加`additionalParameters = ['--core-library']`
+
+```java
+    dexOptions {
+        javaMaxHeapSize "4g"
+        additionalParameters = ['--core-library']
+    }
+```
+

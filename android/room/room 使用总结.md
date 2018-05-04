@@ -27,3 +27,9 @@ Room 使用总结
 @Query("SELECT COUNT(is_checked) FROM table WHERE is_checked = 1")
 public abstract int  getNumberOfRows();
 ```
+
+### ERROR: `room attempt to re-open an already-closed object: SQLiteDatabase`
+
+- 在设置里面，清除数据后恢复正常。
+
+
