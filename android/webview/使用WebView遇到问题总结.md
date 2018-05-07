@@ -2,6 +2,7 @@
 ================
 
 [WebView加载URL跳转到系统浏览器的问题](#WebView加载URL跳转到系统浏览器的问题)
+[WebView 中文乱码](#WebView 中文乱码)
 
 ### WebView加载URL跳转到系统浏览器的问题
 
