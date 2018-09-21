@@ -1,7 +1,7 @@
 Launcher启动应用程序过程
 ===============
 #### Launcher启动应用程序流程图
-![activity_flow](/images/activity_flow.png "桌面启动应用流程")
+![activity_flow](https://raw.githubusercontent.com/windhuiyi/AndroidStudy/master/images/activity_flow.png "桌面启动应用流程")
 ---------------
 1.Launcher会执行的`startActivity`有几种重载方法，但最终会调用`startActivityForResult`  
 2.Activity 的`startActivityForResult`会调用Instrumentation的`execStartActivity`方法
