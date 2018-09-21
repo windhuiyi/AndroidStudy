@@ -1,13 +1,13 @@
 Android Studio Gradle Bug错误汇总
 =============================
 
-###  Run 的时候报错，`apk does not exist on disk.`
+###   Android Studio Run 报错:`apk does not exist on disk.`
 
 - 解决办法：点一下`Gradle projects`的那个刷新图标就行了。
 
 ![android_studio_gradle_01](/images/android_studio_gradle_01.png "android_studio_gradle_01")
 
-### Error:All flavors must now belong to a named flavor dimension.
+### Gradle 报错:`Error:All flavors must now belong to a named flavor dimension.`
 
 - 解决办法：Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html ，就在这个网址可以找到答案。
     - 要解决此错误，请将每个风味分配至一个给定维度，如下面的示例中所示。 由于依赖项匹配现在由插件处理，您应当谨慎地为风味维度命名。例如，如果您的所有应用和库模块均使用 foo 维度，您对插件可以匹配的风味的控制力较弱。
@@ -32,7 +32,7 @@ productFlavors {
 
 ```
 
-###  `gradlew: command not found`
+###  Gradle 使用`gradlew`命令 报错:`gradlew: command not found`
 
 - 解决办法：不要运行`gradlew`,运行`./gradlew`,不过一开始还是不行的。。。需要先运行`chmod ./gradlew`
 
@@ -60,7 +60,7 @@ productFlavors {
 - [安卓模拟器设置网速和延迟](https://blog.csdn.net/crazyman2010/article/details/53229520)
 - [AVD 属性](https://developer.android.com/studio/run/managing-avds.html)
 
-### Absolute path are not supported when setting an output file name
+### Gradle 报错 `Absolute path are not supported when setting an output file name`
 
 - 解决办法: 修改路径。
 
@@ -143,3 +143,32 @@ Error:when not building a core library...
     }
 ```
 
+### Gradle 打包 错误 `Invalid main APK outputs : BuildOutput`
+
+- 解决办法:在`lintOptions`里面添加`checkReleaseBuilds`为 false
+
+```java
+lintOptions { 
+
+    checkReleaseBuilds false
+
+}
+```
+
+### Gradle Make Module error "Cause: duplicate entry: org/intellij/lang/annotations/Flow.class"
+
+- 解决方法：在 android 下添加
+
+```java
+    configurations {
+        compile.exclude group:'org.jetbrains', module: 'annotations'
+    }
+```
+
+###### 参考
+
+[How to fix Gradle build error: “java.util.zip.ZipException: duplicate entry”](https://medium.com/@terrakok/how-to-fix-gradle-build-error-java-util-zip-zipexception-duplicate-entry-83d102038056)
+
+### Gradle Run Error "Error converting bytecode to dex","Translation has been interrupted"
+
+- 一般存在包冲突，需要寻找到冲突的包。
