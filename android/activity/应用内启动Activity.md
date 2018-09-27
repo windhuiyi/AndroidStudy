@@ -1,7 +1,7 @@
 应用内启动Activity
 =============
 #### 应用内启动Activity流程图
-![activity_start_flow](/images/activity_start_flow.png "应用内启动Activity流程")
+![activity_start_flow](https://raw.githubusercontent.com/windhuiyi/AndroidStudy/master/images/activity_flow.png "应用内启动Activity流程")
 -------------
 1 Activity会执行的`startActivity`有几种重载方法，但最终会调用`startActivityForResult`
 
@@ -177,4 +177,5 @@ activity.performCreate(icicle);
 - 和Launcher启动应用程序区别在于应用已启动，在21步的时候，不用新建PID和运行ActivityThread，而是直接启动Activity。
 ##### 参考
 - [Android应用程序内部启动Activity过程（startActivity）的源代码分析](http://blog.csdn.net/luoshengyang/article/details/6703247)
+
 - [任务和返回栈](https://developer.android.com/guide/components/tasks-and-back-stack.html)
