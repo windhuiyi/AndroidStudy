@@ -39,3 +39,19 @@ private String getResourcesUri(@DrawableRes int id) {
 
 
 
+###   gradient  颜色渐变 
+
+[Android View — Gradient 渐变]: https://www.jianshu.com/p/32d17739d378
+
+```xml
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+	<!-- 起始角度，0 左边；90 下边，180，右边，270 上边。共8个方向，从0开始每次增加45 -->
+    <gradient
+        android:angle="0"
+        android:endColor="#FF3CC929"
+        android:centerColor="#FF00C23F"
+        android:startColor="#FF01AF66" />
+</shape>
+```
+

@@ -125,3 +125,10 @@ web.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 ```
 
 
+
+### WebView 内容字体大小
+
+```java
+binding.wvAgreement.getSettings().setTextZoom(250);
+```
+

@@ -25,9 +25,19 @@ android:textCursorDrawable="@drawable/cursor"
 <string name="edittext_hint"><font size="15">Hint here!</font></string>
 ```
 
-- 可以代码设置Html 格式字符串
+- 可以代码设置Html 格式字符串，这个貌似不起作用。
 
 ```java
 editText.setHint(Html.fromHtml("<font size=\"5\">" + "hinttext1" + "</font>" 
 + "<small>" + "hinttext2" + "</small>" )); 
 ```
+
+### EditText 下划线 自定义
+- 自定义 style
+```xml
+<style name="MyEditText" parent="Theme.AppCompat.Light"> 
+    <item name="colorControlNormal">@color/indigo</item> 
+    <item name="colorControlActivated">@color/pink</item>
+</style>
+```
+

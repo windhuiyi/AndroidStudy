@@ -28,3 +28,33 @@ Window `setLayout` 方法
     }
 
 ```
+### Dialog 透明 半透明
+
+1) XML 设置
+
+- 透明
+```xml
+<style name="Translucent_NoTitle" parent="android:style/Theme.Dialog">
+    <item name="android:background">#00000000</item> <!-- 设置自定义布局的背景透明 -->
+    <item name="android:windowBackground">@android:color/transparent</item>  <!-- 设置window背景透明，也就是去边框 -->
+</style>
+```
+
+- 半透明
+```xml
+  <style name="Transparent  ">  
+    <item name="android:windowBackground">@color/transparent_background</item>  
+    <item name="android:windowNoTitle">true</item>  
+    <item name="android:windowIsTranslucent">true</item>    
+    <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>  
+  </style>  
+```
+
+2）代码设置
+
+```java
+    // 
+    WindowManager.LayoutParams lp=window.getAttributes();
+    lp.dimAmount=0.2f;  // 遮罩层透明度，0.0f~1.0f， 1.0f为完全不透明,dialog周围都是黑的
+    window.setAttributes(lp);
+```

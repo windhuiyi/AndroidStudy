@@ -1,5 +1,5 @@
-Android Studio Gradle Bug错误汇总
-=============================
+Gradle Bug 错误汇总
+==============================
 
 ###   Android Studio Run 报错:`apk does not exist on disk.`
 
@@ -172,3 +172,7 @@ lintOptions {
 ### Gradle Run Error "Error converting bytecode to dex","Translation has been interrupted"
 
 - 一般存在包冲突，需要寻找到冲突的包。
+
+### Android Studio `preview waiting for build to finish`
+
+- just Clean Project
