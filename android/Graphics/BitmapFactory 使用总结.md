@@ -55,3 +55,11 @@ BitmapFactory 使用总结
 - [原Android BitmapFactory用法总结](https://blog.csdn.net/lindonghai/article/details/49618835)
 
 
+### 获取图片大小
+
+```java
+BitmapFactory.Options options = new BitmapFactory.Options();
+options.inJustDecodeBounds = true;
+Bitmap bmp = BitmapFactory.decodeFile(path, options);
+//options.outWidth  和 options.outHeight就是我们想要的宽和高
+```

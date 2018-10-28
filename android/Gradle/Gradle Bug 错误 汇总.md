@@ -176,3 +176,11 @@ lintOptions {
 ### Android Studio `preview waiting for build to finish`
 
 - just Clean Project
+
+### Run 错误 `uses-sdk:minSdkVersion  cannot be smaller than version  declared in library`
+
+- 在`AndroidManifest.xml`添加
+
+```xml
+<uses-sdk tools:overrideLibrary="com.chad.library" />
+```
