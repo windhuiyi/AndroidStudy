@@ -1,11 +1,11 @@
 使用WebViewV遇到问题总结
 ================
 
-[远程调试WebView](#远程调试webview)  
-[WebView加载URL跳转到系统浏览器的问题](#webview加载url跳转到系统浏览器的问题)  
-[WebView 中文乱码](#webview-中文乱码)  
-[WebView JS 交互](#webview-js-交互)  
-[WebView 显示错误](#webview-显示错误)
+[远程调试WebView](Webview/使用WebView遇到问题总结.md#远程调试webview)  
+[WebView加载URL跳转到系统浏览器的问题](Webview/使用WebView遇到问题总结.md#webview加载url跳转到系统浏览器的问题)  
+[WebView 中文乱码](Webview/使用WebView遇到问题总结.md#webview-中文乱码)  
+[WebView JS 交互](Webview/使用WebView遇到问题总结.md#webview-js-交互)  
+[WebView 显示错误](Webview/使用WebView遇到问题总结.md#webview-显示错误)
 
 ### 远程调试WebView
 
@@ -24,7 +24,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 chrome://inspect 页面将显示您的设备上已启用调试的 WebView 列表。  
 要开始调试，请点击您想要调试的 WebView 下方的 inspect。像使用远程浏览器标签一样使用 DevTools
 
-### WebView加载URL跳转到系统浏览器的问题
+### WebView 拦截 URL 不跳转到系统浏览器
 
 - 设置`WebViewClient`,重写`shouldOverrideUrlLoading`方法
 ``` java
@@ -130,5 +130,32 @@ web.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
 ```java
 binding.wvAgreement.getSettings().setTextZoom(250);
+```
+
+### WebView 按返回键返回上一页
+
+- 改写`onBackPressed`和`onKeyDown`，判断是否能`canGoBack`
+
+```java
+// 改写 onBackPressed
+@Override
+public void onBackPressed() {
+    if(mWebView.canGoBack()){
+        mWebView.goBack();
+        return;
+    }
+
+    super.onBackPressed();
+}
+
+// 改写onKeyDown
+public boolean onKeyDown(int keyCode, KeyEvent event){
+    if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+        mWebView.goBack();
+        return true;
+    }
+
+    return super.onKeyDown(keyCode, event);
+}
 ```
 

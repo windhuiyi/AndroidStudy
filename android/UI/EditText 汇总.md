@@ -41,3 +41,9 @@ editText.setHint(Html.fromHtml("<font size=\"5\">" + "hinttext1" + "</font>"
 </style>
 ```
 
+### EditText 光标显示在最后
+
+```java
+    editText.setSelection(str.length());
+```
+

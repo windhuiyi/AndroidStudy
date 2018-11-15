@@ -184,3 +184,14 @@ lintOptions {
 ```xml
 <uses-sdk tools:overrideLibrary="com.chad.library" />
 ```
+
+### Gradle compile 依赖包下载位置
+
+- MAC: `~/.gradle/caches/modules-2/files-2.1`
+
+### Gradle compile 没有下载
+
+- 只能下载 jar 包，或者 compile aar 包。
+
+
+
