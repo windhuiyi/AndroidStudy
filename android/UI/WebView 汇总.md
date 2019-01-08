@@ -159,3 +159,25 @@ public boolean onKeyDown(int keyCode, KeyEvent event){
 }
 ```
 
+### WebView 前进 后退 刷新
+
+```java
+mWebView.goBack(); //后退
+mWebView.goForward();//前进
+mWebView.reload(); //刷新
+```
+
+### WebView 加载不出网页 显示错误或者空白
+
+```java
+        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setJavaScriptEnabled(true); // 加上这个才显示正确
+```
+
+- 还有一个问题就是 WebView的布局问题也可能导致显示不出。
+

@@ -33,3 +33,23 @@ RecyclerView 使用总结
            }
        });
 ```
+### RecyclerView 添加 HeaderView 之后，自动滚动一些距离
+
+- 网上找的是RecyclerView获取焦点问题。上一层的SwipeRefreshLayout设置`focusableInTouchMode`和`focusable`之后可以解决问题
+
+```java
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_index"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+```

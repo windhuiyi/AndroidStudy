@@ -34,10 +34,10 @@ Window `setLayout` 方法
 
 - 透明
 ```xml
-<style name="Translucent_NoTitle" parent="android:style/Theme.Dialog">
-    <item name="android:background">#00000000</item> <!-- 设置自定义布局的背景透明 -->
-    <item name="android:windowBackground">@android:color/transparent</item>  <!-- 设置window背景透明，也就是去边框 -->
-</style>
+<style name="dialogTransparent" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊，背景透明是这个--></style>
 ```
 
 - 半透明

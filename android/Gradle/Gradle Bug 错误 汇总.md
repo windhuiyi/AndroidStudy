@@ -193,5 +193,24 @@ lintOptions {
 
 - 只能下载 jar 包，或者 compile aar 包。
 
+### Gradle compile api implementation 区别
+
+- compile和 api 没有区别， api代替之前的compile
+
+- implementation只作用于当前 module，不会传递。例如 AModule implementation Glide,Glide 只在 AModule 起作用，BModule 虽然依赖 AModule，但是无法引用 Glide。
+
+- 依赖首先应该设置为`implementation`的，如果没有错，那就用`implementation`，如果有错，那么使用`api`指令。使用`implementation`会使编译速度有所增快。
+
+### Gradle Error `No toolchains found in the NDK toolchains folder `
+
+- 具体报错信息
+```
+No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android This version of the NDK may be incompatible with the Android Gradle plugin version 3.0 or older.
+```
+- 解决版本：下载新的 NDK 包，解压。在`toolchains`文件夹下面找到`mips64el-linux-android-4.9`把它复制进原来的`toolchains`文件夹下，这样就不会报错了。
 
 
+
+### Gradle Libraly Module switch 语句 如果是 view.getId() 会报错
+
+- Resource IDs cannot be used in a switch statement in Android library modules 因为id 不是 final int 了。要用 if-else 语句了。
