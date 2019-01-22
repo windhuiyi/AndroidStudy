@@ -214,3 +214,9 @@ No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-l
 ### Gradle Libraly Module switch 语句 如果是 view.getId() 会报错
 
 - Resource IDs cannot be used in a switch statement in Android library modules 因为id 不是 final int 了。要用 if-else 语句了。
+
+
+
+### Gradle 运行APP报错 `com.android.tools.r8.errors.CompilationError: Program type already present`
+
+- 其实就是这个类已经加载或存在了,也就是说很大的可能是因为重复引入了这个类,所以就去检查了这个类都存在哪些jar包中,最后在引用里发现这两个引用里面都有这个类,所以这个问题去掉一个就解决了,当遇到这个问题的时候可以检查下jar包有没有重复的

@@ -24,3 +24,30 @@ Retrofit 学习
 
 
 
+### Retrofit BaseUrl 报错问题
+
+```java
+Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(new LiveDataCallAdapterFactory())
+                .baseUrl("http://api.example.com/api/") // 最后必须带个/ 不然会报错
+                .client(okHttpClient)
+                .build()
+                .create(Test.class);
+```
+
+- 如果你在注解中提供的url是完整的url，则url将作为请求的url。
+```java
+@GET("http://api.example.com/api/member/address/exitaddress")
+实际请求地址http://api.example.com/api/member/address/exitaddress
+```
+- 如果你在注解中提供的url是不完整的url，且不以 / 开头，则请求的url为baseUrl+注解中提供的值
+```java
+@GET("member/address/exitaddress")
+实际请求地址http://api.example.com/api/member/address/exitaddress
+```
+- 如果你在注解中提供的url是不完整的url，且以 / 开头，则请求的url为baseUrl的主机部分+注解中提供的值
+```java
+@GET("/member/address/exitaddress")
+实际请求地址http://api.example.com/member/address/exitaddress 会少了/api
+```
