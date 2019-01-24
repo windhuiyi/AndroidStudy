@@ -1,9 +1,9 @@
 Gradle Bug 错误汇总
 ==============================
 
-[Android Studio Run 报错:`apk does not exist on disk.`](#Android-Studio-Run-报错:`apk does not exist on disk.`)
+[Android Studio Run 报错:`apk does not exist on disk.`](#Android-Studio-Run-报错)
 [Gradle 在library module 的signingConfigs不起作用](#Gradle-在library-module-的signingConfigs不起作用)
-
+[Gradle 运行APP报错 com.android.tools.r8.errors.CompilationError: Program type already present](#Gradle-运行APP报错-com.android.tools.r8.errors.CompilationError:-Program-type-already-present)
 
 ###   Android Studio Run 报错:`apk does not exist on disk.`
 
