@@ -1,6 +1,10 @@
 Gradle Bug 错误汇总
 ==============================
 
+[Android Studio Run 报错:`apk does not exist on disk.`](#Android-Studio-Run-报错:`apk does not exist on disk.`)
+[Gradle 在library module 的signingConfigs不起作用](#Gradle-在library-module-的signingConfigs不起作用)
+
+
 ###   Android Studio Run 报错:`apk does not exist on disk.`
 
 - 解决办法：点一下`Gradle projects`的那个刷新图标就行了。
@@ -220,3 +224,27 @@ No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-l
 ### Gradle 运行APP报错 `com.android.tools.r8.errors.CompilationError: Program type already present`
 
 - 其实就是这个类已经加载或存在了,也就是说很大的可能是因为重复引入了这个类,所以就去检查了这个类都存在哪些jar包中,最后在引用里发现这两个引用里面都有这个类,所以这个问题去掉一个就解决了,当遇到这个问题的时候可以检查下jar包有没有重复的
+
+### Gradle 在library module 的`signingConfigs`不起作用。
+
+- 需要设置在application module 的build.gradle 里面
+
+```java
+    signingConfigs {
+        release {
+            keyAlias 
+            keyPassword ''
+            storeFile file('')
+            storePassword ''
+        }
+
+    }
+    buildTypes {
+        release {           
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+```
