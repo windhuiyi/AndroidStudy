@@ -32,3 +32,6 @@ Android Studio 使用汇总
 - [安卓模拟器设置网速和延迟](https://blog.csdn.net/crazyman2010/article/details/53229520)
 - [AVD 属性](https://developer.android.com/studio/run/managing-avds.html)
 
+### DELETE_FAILED_INTERNAL_ERROR 错误
+
+- 这个是小米手机的问题，需要打开USB安装，这 tmd 需要插入 sim 卡。

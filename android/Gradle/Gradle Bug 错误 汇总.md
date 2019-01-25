@@ -19,7 +19,7 @@ Gradle Bug 错误汇总
 [Gradle Libraly Module switch 语句报错](#gradle-libraly-module-switch-语句报错)
 [Program type already present](#program-type-already-present)
 
-###apk does not exist on disk.
+### apk does not exist on disk.
 
 - 解决办法：点一下`Gradle projects`的那个刷新图标就行了。
 
@@ -232,3 +232,43 @@ com.android.tools.r8.errors.CompilationError: Program type already present
         }
     }
 ```
+
+### 方法数超过64K
+
+- 报错-Cannot fit requested classes in a single dex file (# methods: 68106 > 65536)
+
+- minSdkVersion 设置为 21 或更高值，只需设置multiDexEnabled为 true
+```java
+android {
+    defaultConfig {
+        ...
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+    }
+    ...
+}
+```
+- 如果您的 minSdkVersion 设置为 20 或更低值
+```java
+android {
+    defaultConfig {
+        ...
+        minSdkVersion 15
+        targetSdkVersion 28
+        multiDexEnabled true // 启用
+    }
+    ...
+}
+
+dependencies {
+  compile 'com.android.support:multidex:1.0.3' // 依赖
+}
+
+public class MyApplication extends MultiDexApplication { ... } // 继承
+```
+
+###### 参考
+
+[配置方法数超过 64K 的应用](https://developer.android.com/studio/build/multidex)
+
