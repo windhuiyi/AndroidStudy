@@ -23,3 +23,4 @@ bindingView.get().rvList.addOnScrollListener(new RecyclerView.OnScrollListener()
             }
         });
 ```
+

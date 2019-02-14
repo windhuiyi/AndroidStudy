@@ -51,3 +51,9 @@ Retrofit.Builder()
 @GET("/member/address/exitaddress")
 实际请求地址http://api.example.com/member/address/exitaddress 会少了/api
 ```
+### Retrofit @GET 动态路径 @Path
+
+```java
+ @GET("identity/appWechatOauthBack/code={code}/type=jishi_wx_login")
+    LiveData<ApiResponse<Return<WxLoginInfo>>> fetchWxLoginInfo(@Path("code") String code);
+```

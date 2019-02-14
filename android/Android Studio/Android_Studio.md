@@ -35,3 +35,9 @@ Android Studio 使用汇总
 ### DELETE_FAILED_INTERNAL_ERROR 错误
 
 - 这个是小米手机的问题，需要打开USB安装，这 tmd 需要插入 sim 卡。
+
+### Android Studio 新建类头部注释 设置
+
+- 设置位置 Editor -> File and Code Templates -> Includes -> File Header
+
+[![file_header](/images/file_header.png)]

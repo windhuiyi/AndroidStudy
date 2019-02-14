@@ -86,3 +86,29 @@ tabLayout.setTabRippleColor(null);
         }
 ```
 
+### TabLayout setCustomView 自定义视图
+
+- 下标长度要自定义，或者选中的时候字体大小要变化，这时候就需要自定义视图来解决，然后监听 tab 选择变化来改变视图。
+
+```java
+        tabLayout.getTabAt(i).setCustomView(getCustomView(i)); //设置自定义视图
+        
+        // 添加TabSelectedListener监听
+        bindingView.get().tabLayout.addTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+               // 选择的时候改变视图
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+               // 未选择的时候改变图片
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+```
+
