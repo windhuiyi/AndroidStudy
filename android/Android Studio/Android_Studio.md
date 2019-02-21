@@ -40,4 +40,5 @@ Android Studio 使用汇总
 
 - 设置位置 Editor -> File and Code Templates -> Includes -> File Header
 
-[![file_header](/images/file_header.png)]
+![file_header](https://raw.githubusercontent.com/windhuiyi/AndroidStudy/19e5580e591613e69a773c1bd6b2d1c5a9477966/images/file_header.png)
+

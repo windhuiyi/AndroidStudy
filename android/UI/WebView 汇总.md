@@ -6,12 +6,13 @@
 [WebView 中文乱码](Webview/使用WebView遇到问题总结.md#webview-中文乱码)  
 [WebView JS 交互](Webview/使用WebView遇到问题总结.md#webview-js-交互)  
 [WebView 显示错误](Webview/使用WebView遇到问题总结.md#webview-显示错误)
+[WebView 报错 ERR_UNKNOWN_URL_SCHEME](WebView-报错-ERR_UNKNOWN_URL_SCHEME)
 
 ### 远程调试WebView
 
-#### 配置 WebViews 进行调试
+- 配置 WebViews 进行调试
 
-- 比较强大，可以查看源码，查看错误等，用于调试，排错。
+  - 比较强大，可以查看源码，查看错误等，用于调试，排错。
 
 ```java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -19,10 +20,10 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 }
 ```
 
-#### 在 DevTools 中打开 WebView
+- 在 DevTools 中打开 WebView
 
-chrome://inspect 页面将显示您的设备上已启用调试的 WebView 列表。  
-要开始调试，请点击您想要调试的 WebView 下方的 inspect。像使用远程浏览器标签一样使用 DevTools
+  - chrome://inspect 页面将显示您的设备上已启用调试的 WebView 列表。  
+  - 要开始调试，请点击您想要调试的 WebView 下方的 inspect。像使用远程浏览器标签一样使用 DevTools
 
 ### WebView 拦截 URL 不跳转到系统浏览器
 
@@ -51,7 +52,7 @@ public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
 ### WebView JS 交互
 
-#### Enabling JavaScript
+#### 1.Enabling JavaScript
 
 ```java
 WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -59,7 +60,7 @@ WebSettings webSettings = myWebView.getSettings();
 webSettings.setJavaScriptEnabled(true);
 ```
 
-#### Binding JavaScript code to Android code
+#### 2.Binding JavaScript code to Android code
 
 - 定义JS接口，关键是和html的javascript名称保持一致！～
 
@@ -112,19 +113,6 @@ webView.addJavascriptInterface(this, "Android");
 ### WebView 显示错误
 
 - 可以远程调试WebView，排查错误
-
-```java
-// 网上一般说加上这些。不过有没有用靠运气，不行要调试看看。
-// 开启DomStorage
-web.getSettings().setDomStorageEnabled(true);
-// 使用viewport
-web.getSettings().setUseWideViewPort(true);
-// 采用OverviewMode
-web.getSettings().setLoadWithOverviewMode(true);
-web.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-```
-
-
 
 ### WebView 内容字体大小
 
@@ -181,3 +169,21 @@ mWebView.reload(); //刷新
 
 - 还有一个问题就是 WebView的布局问题也可能导致显示不出。
 
+### WebView HTTP 和 HTTPS 请求混合
+
+- 请求的地址如果是HTTPS开头的，如果有 HTTP的请求，这时候会不起作用。。。可能导致HTTP开头的图片显示不出来，或者接口请求不了，需要设置混合模式。
+```java
+ if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+            bindingView.get().wv.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+```
+
+### WebView 报错 ERR_UNKNOWN_URL_SCHEME
+
+- 复写`shouldOverrideUrlLoading`方法时，`view.loadUrl(url);`造成的，去除后不会报错。
+```java
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+```

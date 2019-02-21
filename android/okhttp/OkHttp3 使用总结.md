@@ -12,3 +12,18 @@ OkHttp3 使用总结
 
 
 
+### OkHttp3 java.lang.IllegalStateException: closed 错误
+
+- ResponseBody调用string后，会关闭流，再调用这个方法就会报错。
+
+```java
+  public final String string() throws IOException {
+    BufferedSource source = source();
+    try {
+      Charset charset = Util.bomAwareCharset(source, charset());
+      return source.readString(charset);
+    } finally {
+      Util.closeQuietly(source);
+    }
+  }
+```
