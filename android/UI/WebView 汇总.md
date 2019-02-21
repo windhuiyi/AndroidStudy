@@ -5,7 +5,7 @@
 [WebView加载URL跳转到系统浏览器的问题](#WebView-拦截-URL-不跳转到系统浏览器)  
 [WebView 中文乱码](#webview-中文乱码)  
 [WebView JS 交互](#webview-js-交互)  
-[WebView 显示错误](#webview-显示错误)
+[WebView 显示错误](#webview-显示错误)  
 [WebView 报错 ERR_UNKNOWN_URL_SCHEME](#WebView-报错-ERR-UNKNOWN-URL-SCHEME)
 
 ### 远程调试WebView
@@ -178,7 +178,7 @@ mWebView.reload(); //刷新
         }
 ```
 
-### WebView 报错 ERR_UNKNOWN_URL_SCHEME
+### WebView 报错 ERR UNKNOWN URL SCHEME
 
 - 复写`shouldOverrideUrlLoading`方法时，`view.loadUrl(url);`造成的，去除后不会报错。
 ```java
