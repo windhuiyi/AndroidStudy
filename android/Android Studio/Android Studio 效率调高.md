@@ -64,3 +64,9 @@ Android Studio 效率调高
             e.printStackTrace();
         }
 ```
+
+### Android studio 过滤日志
+- 在A ndroid Studio Log 那里添加过滤，在LogTag 那里输入下面的正则表达式。
+```java
+^(?!.*(xxx|yyy)).*$  // 正则表达式,|进行分割
+```

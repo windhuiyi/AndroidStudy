@@ -25,3 +25,41 @@ request.packageValue = "Sign=WXPay"; // 接口没有返回。自己加上。
     req.scope = "snsapi_userinfo"; // 应用授权作用域，如获取用户个人信息则填写snsapi_userinfo
     req.state = "wx_login"; //用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
 ```
+
+### 微信分享 checkArgs fail, thumbData is invalid
+
+- 缩略图太大了，超过32K，会报错，网上找到解决办法。
+
+```java
+int i;
+		int j;
+		if (bmp.getHeight() > bmp.getWidth()) {
+			i = bmp.getWidth();
+			j = bmp.getWidth();
+		} else {
+			i = bmp.getHeight();
+			j = bmp.getHeight();
+		}
+
+		Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
+		Canvas localCanvas = new Canvas(localBitmap);
+
+		while (true) {
+			localCanvas.drawBitmap(bmp, new Rect(0, 0, i, j), new Rect(0, 0,i, j), null);
+			if (needRecycle)
+				bmp.recycle();
+			ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+			localBitmap.compress(Bitmap.CompressFormat.JPEG, 100,
+					localByteArrayOutputStream);
+			localBitmap.recycle();
+			byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
+			try {
+				localByteArrayOutputStream.close();
+				return arrayOfByte;
+			} catch (Exception e) {
+				//F.out(e);
+			}
+			i = bmp.getHeight();
+			j = bmp.getHeight();
+		}
+```

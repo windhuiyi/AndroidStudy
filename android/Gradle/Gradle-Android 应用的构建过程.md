@@ -3,7 +3,7 @@ Gradle-Android 应用的构建过程
 
 ### Android 应用的构建过程
 
-![image_build_application](/images/image_build_application.png)
+![image_build_application](https://github.com/windhuiyi/AndroidStudy/blob/master/images/image_build_application.png?raw=true)
 
 1. 主要的资源文件（layout, values 等）都被 aapt 编译，并且在一个 R 文件中引用
 2. Java 代码被 Java 编译器编译成 JVM 字节码(.class 文件)
@@ -15,3 +15,6 @@ Gradle-Android 应用的构建过程
 - 几个注意点
   - 上面的步骤中第一步注意是主要的资源文件，有些特别的资源文件就不会被编译，比如 assets 目录下的文件，raw 目录下的文件还有图片，都不会被编译。只不过 raw 下的文件会在 R 文件里生成 id
   - 如果对 apk 正式签名，还需要使用 zipalign 工具对 apk 进行对齐操作，这样做的好处是当应用运行时会减少内存的开销
+
+> 参考文章
+> [Gradle for Android 系列：为什么 Gradle 这么火](https://cloud.tencent.com/developer/article/1014645)
